@@ -35,7 +35,11 @@ function newTodo(event) {
 
 
 // UPDATE isComplete status to true, takes in the item's ID to target the specific row
-function updateTodo(todoId) {
+function updateTodo(todoId, event) {
+    event.preventDefault()
+    let updatedItem = event.target.parentElement.parentElement
+    console.log(updatedItem)
+    updatedItem.classList.add('completed')
     axios.put(`/todos/${todoId}`).then(response => {
         getTodo();
     }).catch((error) => {
@@ -61,13 +65,24 @@ function renderList(todoList) {
     let todoTableBody = document.getElementById('todoTable')
     todoTableBody.innerHTML = '';
     // Loop over each item and append data to the DOM
+        // Also use a conditional so that when the DOM renders again it will keep the completed class if isComplete = true
     for (let item of todoList) {
-        todoTableBody.innerHTML += `
-      <tr>
-        <td>${item.text}</td>
-        <td><button onClick="updateTodo(${item.id})">Completed</button></td>
-        <td><button onClick="deleteTodo(${item.id})">Delete</button></td>
-      </tr>
-  `;
+        if (item.isComplete === true){
+            todoTableBody.innerHTML += `
+            <tr class="completed">
+                <td>${item.text}</td>
+                <td><button disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button onClick="deleteTodo(${item.id})">Delete</button></td>
+            </tr>
+            `
+        } else{
+            todoTableBody.innerHTML += `
+            <tr>
+                <td>${item.text}</td>
+                <td><button onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button onClick="deleteTodo(${item.id})">Delete</button></td>
+            </tr>
+            `
+        }
     }
 }
