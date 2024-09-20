@@ -52,12 +52,31 @@ function updateTodo(todoId, event) {
 
 // DELETEs the specific todo item
 function deleteTodo(todoId) {
-    axios.delete(`/todos/${todoId}`).then((response) => {
-        getTodo();
-    }).catch((error) => {
-        console.log('Error', error);
-        alert('Oh no......');
-    });
+    // Creates confirmation screen when Delete button is clicked
+    Swal.fire({
+        title: 'Are you sure you want to delete this item?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+          actions: 'my-actions',
+          cancelButton: 'order-1 right-gap',
+          confirmButton: 'order-2',
+          denyButton: 'order-3',
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Deleted!', '', 'success')
+          axios.delete(`/todos/${todoId}`).then((response) => {
+            getTodo();
+        }).catch((error) => {
+            console.log('Error', error);
+            alert('Oh no......');
+        });
+        } else if (result.isDenied) {
+        }
+      })
 }
 
 
