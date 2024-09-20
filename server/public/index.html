@@ -14,8 +14,8 @@
   </header>
   <div>
     <h2>Add New To-Do Item</h2>
-      <input type="text" id="todoText" value="" placeholder="New To-Do Item">
-      <button type="button" onclick="newTodo(event)">Submit</button>
+      <input type="text" id="todoText" data-testid="toDoTextInput" value="" placeholder="New To-Do Item">
+      <button type="button" onclick="newTodo(event)" data-testid="submitButton">Submit</button>
   </div>
   <div>
     <h2>Current To-Do List:</h2>
@@ -24,6 +24,7 @@
           <tr>
             <th>To-Do</th>
             <th>Mark Completed</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody id="todoTable">

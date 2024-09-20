@@ -37,6 +37,7 @@ function newTodo(event) {
 // UPDATE isComplete status to true, takes in the item's ID to target the specific row
 function updateTodo(todoId, event) {
     event.preventDefault()
+    // Add completed class to any rows that have the completed button clicked
     let updatedItem = event.target.parentElement.parentElement
     console.log(updatedItem)
     updatedItem.classList.add('completed')
@@ -66,21 +67,22 @@ function renderList(todoList) {
     todoTableBody.innerHTML = '';
     // Loop over each item and append data to the DOM
         // Also use a conditional so that when the DOM renders again it will keep the completed class if isComplete = true
+        // Disables Completed button if isComplete = true
     for (let item of todoList) {
         if (item.isComplete === true){
             todoTableBody.innerHTML += `
-            <tr class="completed">
+            <tr class="completed" data-testid="toDoItem">
                 <td>${item.text}</td>
-                <td><button disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button onClick="deleteTodo(${item.id})">Delete</button></td>
+                <td><button data-testid="completeButton" disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button data-testid="deleteButton" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `
         } else{
             todoTableBody.innerHTML += `
-            <tr>
+            <tr data-testid="toDoItem">
                 <td>${item.text}</td>
-                <td><button onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button onClick="deleteTodo(${item.id})">Delete</button></td>
+                <td><button data-testid="completeButton" onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button data-testid="deleteButton" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `
         }
