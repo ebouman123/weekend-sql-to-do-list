@@ -51,6 +51,7 @@ function updateTodo(todoId, event) {
 
 
 // DELETEs the specific todo item
+    // Confirmed that tests pass when sweetalert is disabled
 function deleteTodo(todoId) {
     // Creates confirmation screen when Delete button is clicked
     Swal.fire({
@@ -61,9 +62,9 @@ function deleteTodo(todoId) {
         denyButtonText: 'No',
         customClass: {
           actions: 'my-actions',
-          cancelButton: 'order-1 right-gap',
-          confirmButton: 'order-2',
-          denyButton: 'order-3',
+          cancelButton: 'order-3 right-gap',
+          confirmButton: 'order-1',
+          denyButton: 'order-2',
         },
       }).then((result) => {
         if (result.isConfirmed) {
@@ -90,18 +91,18 @@ function renderList(todoList) {
     for (let item of todoList) {
         if (item.isComplete === true){
             todoTableBody.innerHTML += `
-            <tr class="completed" data-testid="toDoItem">
-                <td>${item.text}</td>
-                <td><button data-testid="completeButton" disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button data-testid="deleteButton" onClick="deleteTodo(${item.id})">Delete</button></td>
+            <tr class="completed table-success" data-testid="toDoItem">
+                <td class="fs-5 fw-light">${item.text}</td>
+                <td><button data-testid="completeButton" class="btn btn-outline-success" disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button data-testid="deleteButton" class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `
         } else{
             todoTableBody.innerHTML += `
             <tr data-testid="toDoItem">
-                <td>${item.text}</td>
-                <td><button data-testid="completeButton" onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button data-testid="deleteButton" onClick="deleteTodo(${item.id})">Delete</button></td>
+                <td class="fs-5 fw-light">${item.text}</td>
+                <td><button data-testid="completeButton" class="btn btn-outline-success" onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button data-testid="deleteButton" class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `
         }

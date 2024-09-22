@@ -62,6 +62,7 @@ describe('SQL TO-DO List', () => {
       .should('exist')
   })
 
+
   // Verify that the app behaves correctly when two to-do
   // items have their "delete" buttons clicked:
   it('DELETE: Deletes a to-do item after its "delete" button is clicked', () => {
@@ -69,7 +70,10 @@ describe('SQL TO-DO List', () => {
     cy.contains('[data-testid="toDoItem"]', 'Feed the cat', { matchCase: false })
       .find('[data-testid="deleteButton"]')
       .click()
-    
+
+    // cy.contains('Yes')
+    //   .click({force: true})
+
     // Test that the number of to-do items has dropped from
     //    four to three:
     cy.get('[data-testid="toDoItem"]')
