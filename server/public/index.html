@@ -1,47 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src="./scripts/axios.js"></script>
+    <script defer src="./scripts/client.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>SQL TO-DO List</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="./scripts/axios.js"></script>
-  <script defer src="./scripts/client.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>SQL TO-DO List</title>
-</head>
-
-<body>
-  <div class=".container">
-    <header>
-      <h1 class="text-start fs-1 m-4 border-bottom border-dark">SQL To-Do List</h1>
-    </header>
-    <div>
-      <h2 class="ms-4 fs-3">Add New To-Do Item</h2>
-      <input class="ms-4 mb-4 inputText" type="text" id="todoText" data-testid="toDoTextInput" value="" placeholder="New To-Do Item">
-      <button type="button" onclick="newTodo(event)" data-testid="submitButton" class="btn btn-success ms-1 mt-1 mb-1">+</button>
+  <body>
+    <div class=".container">
+      <header>
+        <h1 class="text-start fs-1 m-4 border-bottom border-dark">
+          SQL To-Do List
+        </h1>
+      </header>
+      <div>
+        <h2 class="ms-4 fs-3">Add New To-Do Item</h2>
+        <input
+          class="ms-4 mb-4 inputText"
+          type="text"
+          id="todoText"
+          data-testid="toDoTextInput"
+          value=""
+          placeholder="New To-Do Item"
+        />
+        <button
+          type="button"
+          onclick="newTodo(event)"
+          data-testid="submitButton"
+          class="btn btn-success ms-1 mt-1 mb-1"
+        >
+          +
+        </button>
+      </div>
+      <div>
+        <h2 class="ms-4 fs-3">Current To-Do List:</h2>
+        <table class="table ms-4">
+          <thead>
+            <tr>
+              <th scope="col" class="fs-4 fw-normal">To-Do</th>
+              <th scope="col" class="fs-4 fw-normal">Mark Completed</th>
+              <th scope="col" class="fs-4 fw-normal">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="todoTable" class="table-group-divider">
+            <!--To-Do items placed here-->
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div>
-      <h2 class="ms-4 fs-3">Current To-Do List:</h2>
-      <table class="table ms-4">
-        <thead>
-          <tr>
-            <th scope="col" class="fs-4 fw-normal">To-Do</th>
-            <th scope="col" class="fs-4 fw-normal">Mark Completed</th>
-            <th scope="col" class="fs-4 fw-normal">Delete</th>
-          </tr>
-        </thead>
-        <tbody id="todoTable" class="table-group-divider">
-          <!--To-Do items placed here-->
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
