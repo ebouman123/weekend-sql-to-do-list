@@ -98,18 +98,18 @@ function renderList(todoList) {
   for (let item of todoList) {
     if (item.isComplete === true) {
       todoTableBody.innerHTML += `
-            <tr class="completed table-success" data-testid="toDoItem">
+            <tr class="completed table-success">
                 <td class="fs-5 fw-light">${item.text}</td>
-                <td><button data-testid="completeButton" class="btn btn-outline-success" disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button data-testid="deleteButton" class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
+                <td><button class="btn btn-outline-success" disabled onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `;
     } else {
       todoTableBody.innerHTML += `
-            <tr data-testid="toDoItem">
+            <tr>
                 <td class="fs-5 fw-light">${item.text}</td>
-                <td><button data-testid="completeButton" class="btn btn-outline-success" onClick="updateTodo(${item.id}, event)">Completed</button></td>
-                <td><button data-testid="deleteButton" class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
+                <td><button class="btn btn-outline-success" onClick="updateTodo(${item.id}, event)">Completed</button></td>
+                <td><button class="btn btn-outline-danger" onClick="deleteTodo(${item.id})">Delete</button></td>
             </tr>
             `;
     }
